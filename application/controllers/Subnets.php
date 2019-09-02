@@ -24,7 +24,7 @@ class Subnets extends CI_Controller {
                
         );
 
-		$this->load->view('Konten/subnets_md3', $data);
+		$this->load->view('Konten/subnets', $data);
     }
     
     function getData(){
@@ -41,7 +41,7 @@ class Subnets extends CI_Controller {
 								<th>
 									<div class="btn-group">
 										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->id.')" title="Edit Subnets : '.$dt->abis_Ip_address.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onclick="delete()"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
 									</div>
 								</th>
 								<td style="font-size: 9px;">'.$no++.'</td>
@@ -106,8 +106,8 @@ class Subnets extends CI_Controller {
 				$table .='<tr>
 								<th>
 									<div class="btn-group">
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->Id.')" title="Edit Subnets : '.$dt->abis_Ip_address.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onclick="delete('.$dt->Id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->id.')" title="Edit Subnets : '.$dt->abis_Ip_address.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
 									</div>
 								</th>
 								<td style="font-size: 9px;">'.$no++.'</td>
@@ -155,21 +155,70 @@ class Subnets extends CI_Controller {
 
 	}
 
-	function editData($data){
+	function editSubnets($data){
 		$id = $data;
 		$sql = $this->Model_query->getDataSubnetsWhere($id);
 		$dt = $sql->result();
 		if($dt){
-			print_r($dt);
+			
+			$data = array(
+				'Id'=> $dt[0]->id,
+				'Area'=>$dt[0]->area,
+				'Hostname'=>$dt[0]->hostname,
+				'Router_name'=>$dt[0]->router_name,
+				'Site_id'=>$dt[0]->site_id,
+				'Tower_index'=>$dt[0]->tower_index
+				
+			);
+				// echo $data;
+			$this->load->view('Konten/edit_subnets', $data);
 
 		}else{
 			echo "gagal";
 		}
-	
 	}
 
-	function editData2($id){
-	$data = array('id' => $id);
-		$this->load->view('Konten/edit_subnets', $data);
+	function editDataSubnets(){
+		$id =  $this->input->post('id');
+		$area = $this->input->post('area');
+		$hostname = $this->input->post('hostname');
+		$router_name	= $this->input->post('router_name');
+		$site_id = $this->input->post('site_id');
+		$tower_index = $this->input->post('tower_index');
+
+
+		$data = array(
+			'Area' => $area,
+			'Hostname' => $hostname,
+			'Router_name' => $router_name,
+			'Site_id' => $site_id,
+			'Tower_index' => $tower_index
+		);
+		
+		$update = $this->db->update('data1', $data, array('Id' => $id));
+
+		$sql = $this->Model_global->getSelectedwhere('data1', $data);
+		if($sql->num_rows()>0){
+		  echo json_encode(array('status' => 'sukses'));
+		}else{
+		  echo json_encode(array('status' => 'gagal'));
+		}
+		
+		
 	}
+
+
+	function deleteData($id){
+		$key = array('Id' => $id);
+		$sql1 = $this->Model_global->getSelectedwhere('data1', $key);
+		$sql1 = $sql1->num_rows();
+		if($sql1 > 0){
+			$sql1 = $this->Model_global->delete('data1',$key);
+			echo json_encode(array('status' => 'sukses'));
+		}else{
+			echo json_encode(array('status' => 'gagal'));
+		}
+	}
+
+	
 }

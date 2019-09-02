@@ -27,7 +27,8 @@ class Model_global extends CI_Model {
 	
 	function delete($table,$data)
     {
-        $this->db->delete($table,$data);
+        return $this->db->delete($table,$data);
+        
     }
 	
 	function delete_global($table,$field,$kode){
