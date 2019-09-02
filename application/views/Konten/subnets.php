@@ -123,38 +123,23 @@
         <thead>
         <tr>
             <th class="th-sm"></th>
-            <th class="th-sm">No.
-            </th>
-            <th class="th-sm">Area
-            </th>
-            <th class="th-sm">Hostname
-            </th>
-            <th class="th-sm">Router Name
-            </th>
-            <th class="th-sm">Site ID
-            </th>
-            <th class="th-sm">Tower Index
-            </th>
-            <th class="th-sm">S-VID
-            </th>
-            <th class="th-sm">C-VID
-            </th>
-            <th class="th-sm">IP Address
-            </th>
-            <th class="th-sm">IP Gateway
-            </th>
-            <th class="th-sm">Subnet
-            </th>
-            <th class="th-sm">S-VID
-            </th>
-            <th class="th-sm">C-VID
-            </th>
-            <th class="th-sm">IP Address
-            </th>
-            <th class="th-sm">IP Gateway
-            </th>
-            <th class="th-sm">Subnet
-            </th>
+            <th class="th-sm">No.</th>
+            <th class="th-sm">Status Ip Addres Abis-IUB-S1</th>
+            <th class="th-sm">Area</th>
+            <th class="th-sm">Hostname</th>
+            <th class="th-sm">Router Name </th>
+            <th class="th-sm">Site ID </th>
+            <th class="th-sm">Tower Index </th>
+            <th class="th-sm">S-VID </th>
+            <th class="th-sm">C-VID </th>
+            <th class="th-sm">IP Address </th>
+            <th class="th-sm">IP Gateway </th>
+            <th class="th-sm">Subnet </th>
+            <th class="th-sm">S-VID </th>
+            <th class="th-sm">C-VID </th>
+            <th class="th-sm">IP Address </th>
+            <th class="th-sm">IP Gateway </th>
+            <th class="th-sm">Subnet </th>
         </tr>
         </thead>
         <tbody id="data_table" name="data_table">

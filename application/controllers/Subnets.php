@@ -29,9 +29,9 @@ class Subnets extends CI_Controller {
     
     function getData(){
 		$table = '';
-		$sql = $this->db->query("select * from data1");
+		// $sql = $this->db->query("select * from management_ip");
 
-		$sql = $this->Model_query->getDataSubnets();
+		$sql = $this->Model_global->get_data_table('management_ip');
 
 		if($sql->num_rows() > 0){
 			$no=1;
@@ -40,26 +40,27 @@ class Subnets extends CI_Controller {
 							<tr>
 								<th>
 									<div class="btn-group">
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->id.')" title="Edit Subnets : '.$dt->abis_Ip_address.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->Id.')" title="Edit Subnets : '.$dt->Ip_address_abis_iub_s1.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->Id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
 									</div>
 								</th>
 								<td style="font-size: 9px;">'.$no++.'</td>
-								<td style="font-size: 9px;">'.$dt->area.'</td>
-								<td style="font-size: 9px;">'.$dt->hostname.'</td>
-								<td style="font-size: 9px;">'.$dt->router_name.'</td>
-								<td style="font-size: 9px;">'.$dt->site_id.'</td>
-								<td style="font-size: 9px;">'.$dt->tower_index.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_S_vid.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_C_vid.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_Ip_address.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_Ip_gateway.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_subnet.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_s.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_c.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_ip.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_gate.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_subnet.'</td>
+								<td style="font-size: 9px;">'.$dt->Status_ip_address_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Area.'</td>
+								<td style="font-size: 9px;">'.$dt->Hostname.'</td>
+								<td style="font-size: 9px;">'.$dt->Router_name.'</td>
+								<td style="font-size: 9px;">'.$dt->Site_id.'</td>
+								<td style="font-size: 9px;">'.$dt->Tower_index.'</td>
+								<td style="font-size: 9px;">'.$dt->S_vid_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->C_vid_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_address_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_gateway_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Subnet_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->S_vid_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->C_vid_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_address_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_gateway_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Subnet_oam.'</td>
 							</tr>		
 				';
 			}
@@ -85,6 +86,7 @@ class Subnets extends CI_Controller {
 								<td style="font-size: 9px;"></td>
 								<td style="font-size: 9px;"></td>
 								<td style="font-size: 9px;"></td>
+								
 			</tr>';
 			echo json_encode(array('status'=>'Gagal', 'Data'=>$table));
 		}
@@ -99,6 +101,7 @@ class Subnets extends CI_Controller {
 		$key3 = $this->input->post('key3');
 		$key4 = $this->input->post('key4');
 
+
 		$sql = $this->Model_query->getDataSearcingSubnets($status_checkbox, $key1, $key2, $key3, $key4);
 		if($sql->num_rows() > 0){
 			$no= 1;
@@ -106,27 +109,28 @@ class Subnets extends CI_Controller {
 				$table .='<tr>
 								<th>
 									<div class="btn-group">
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->id.')" title="Edit Subnets : '.$dt->abis_Ip_address.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->Id.')" title="Edit Subnets : '.$dt->Ip_address_abis_iub_s1.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->Id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
 									</div>
 								</th>
 								<td style="font-size: 9px;">'.$no++.'</td>
-								<td style="font-size: 9px;">'.$dt->area.'</td>
-								<td style="font-size: 9px;">'.$dt->hostname.'</td>
-								<td style="font-size: 9px;">'.$dt->router_name.'</td>
-								<td style="font-size: 9px;">'.$dt->site_id.'</td>
-								<td style="font-size: 9px;">'.$dt->tower_index.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_S_vid.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_C_vid.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_Ip_address.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_Ip_gateway.'</td>
-								<td style="font-size: 9px;">'.$dt->abis_subnet.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_s.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_c.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_ip.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_gate.'</td>
-								<td style="font-size: 9px;">'.$dt->oam_subnet.'</td>
-				</tr>';
+								<td style="font-size: 9px;">'.$dt->Status_ip_address_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Area.'</td>
+								<td style="font-size: 9px;">'.$dt->Hostname.'</td>
+								<td style="font-size: 9px;">'.$dt->Router_name.'</td>
+								<td style="font-size: 9px;">'.$dt->Site_id.'</td>
+								<td style="font-size: 9px;">'.$dt->Tower_index.'</td>
+								<td style="font-size: 9px;">'.$dt->S_vid_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->C_vid_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_address_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_gateway_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Subnet_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->S_vid_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->C_vid_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_address_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_gateway_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Subnet_oam.'</td>
+						  </tr>';
 			}
 			echo json_encode(array('status'=>'success','Data'=>$table));
 		}else{
@@ -148,6 +152,9 @@ class Subnets extends CI_Controller {
 						<td style="font-size: 9px;"></td>
 						<td style="font-size: 9px;"></td>
 						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						
+						
 
 			</tr>';
 			echo json_encode(array('status'=>'Gagal','Data'=>$table));
@@ -156,18 +163,18 @@ class Subnets extends CI_Controller {
 	}
 
 	function editSubnets($data){
-		$id = $data;
-		$sql = $this->Model_query->getDataSubnetsWhere($id);
+		$key = array('Id' => $data);
+		$sql = $this->Model_global->getSelectedwhere('management_ip', $key);
 		$dt = $sql->result();
 		if($dt){
 			
 			$data = array(
-				'Id'=> $dt[0]->id,
-				'Area'=>$dt[0]->area,
-				'Hostname'=>$dt[0]->hostname,
-				'Router_name'=>$dt[0]->router_name,
-				'Site_id'=>$dt[0]->site_id,
-				'Tower_index'=>$dt[0]->tower_index
+				'Id'=> $dt[0]->Id,
+				'Area'=>$dt[0]->Area,
+				'Hostname'=>$dt[0]->Hostname,
+				'Router_name'=>$dt[0]->Router_name,
+				'Site_id'=>$dt[0]->Site_id,
+				'Tower_index'=>$dt[0]->Tower_index
 				
 			);
 				// echo $data;
