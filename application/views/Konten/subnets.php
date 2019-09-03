@@ -149,6 +149,35 @@
     </table>
     </div>
 </main>
+
+
+
+<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+            <!--Header-->
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Are you sure?</p>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+
+                <i class="fas fa-times fa-4x animated rotateIn"></i>
+                <input type="hidden" id="Id_delete" name="Id_delete" value="">
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer flex-center">
+                <a href="" class="btn  btn-outline-danger" onclick="hapusData2()">Yes</a>
+                <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
 <!-- Main layout -->
 
 <!-- Footer -->
@@ -293,16 +322,36 @@ function editData(id){
 }
 
 function hapusData(id){
-    $.ajax({
+
+   $('#Id_delete').val(id);
+   $('#modalConfirmDelete').modal();
+
+    // $.ajax({
+    // type:'POST',
+    // url:site+'Subnets/deleteData/'+id,
+    // dataType:'json',
+    // success: function(respon){
+    // if(respon.status == 'sukses'){
+    //     alert("sukses");
+    //    window.location.href=site+'Subnets';
+    //   }else{
+    //     alert("Gagal");
+    //     window.location.href=site+'Subnets';
+    //   }  
+    // }
+    // });
+}
+
+function hapusData2(){
+  var id = $('#Id_delete').val();
+   $.ajax({
     type:'POST',
     url:site+'Subnets/deleteData/'+id,
     dataType:'json',
     success: function(respon){
     if(respon.status == 'sukses'){
-        alert("sukses");
        window.location.href=site+'Subnets';
       }else{
-        alert("Gagal");
         window.location.href=site+'Subnets';
       }  
     }

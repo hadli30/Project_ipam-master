@@ -41,7 +41,7 @@ class Subnets extends CI_Controller {
 								<th>
 									<div class="btn-group">
 										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->Id.')" title="Edit Subnets : '.$dt->Ip_address_abis_iub_s1.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->Id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
+										<button class="btn btn-primary btn-sm px-1 py-0 m-0" type="button" onClick="hapusData('.$dt->Id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></button>
 									</div>
 								</th>
 								<td style="font-size: 9px;">'.$no++.'</td>
@@ -110,7 +110,7 @@ class Subnets extends CI_Controller {
 								<th>
 									<div class="btn-group">
 										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="editData('.$dt->Id.')" title="Edit Subnets : '.$dt->Ip_address_abis_iub_s1.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
-										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="hapusData('.$dt->Id.')"><i class="fas fa-times fa-xs" aria-hidden="true"></i></a>
+										<button class="btn btn-primary btn-sm px-1 py-0 m-0" type="button" ><i class="fas fa-times fa-xs" aria-hidden="true"></i></button>
 									</div>
 								</th>
 								<td style="font-size: 9px;">'.$no++.'</td>
@@ -202,9 +202,10 @@ class Subnets extends CI_Controller {
 			'Tower_index' => $tower_index
 		);
 		
-		$update = $this->db->update('data1', $data, array('Id' => $id));
+		$update = $this->db->update('management_ip', $data, array('Id' => $id));
 
-		$sql = $this->Model_global->getSelectedwhere('data1', $data);
+		$sql = $this->Model_global->getSelectedwhere('management_ip', $data);
+
 		if($sql->num_rows()>0){
 		  echo json_encode(array('status' => 'sukses'));
 		}else{
@@ -217,10 +218,10 @@ class Subnets extends CI_Controller {
 
 	function deleteData($id){
 		$key = array('Id' => $id);
-		$sql1 = $this->Model_global->getSelectedwhere('data1', $key);
+		$sql1 = $this->Model_global->getSelectedwhere('management_ip', $key);
 		$sql1 = $sql1->num_rows();
 		if($sql1 > 0){
-			$sql1 = $this->Model_global->delete('data1',$key);
+			$sql1 = $this->Model_global->delete('management_ip',$key);
 			echo json_encode(array('status' => 'sukses'));
 		}else{
 			echo json_encode(array('status' => 'gagal'));
