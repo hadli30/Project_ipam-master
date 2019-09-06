@@ -59,6 +59,12 @@ class Model_query extends CI_Model {
         }
 
         return $result = $this->db->query($query);
-    }
+	}
+	
+	function checkReserved($id, $username){
+		$query = "SELECT * FROM management_ip WHERE Id = '$id' AND (Reserved_by = 'Empty' OR Reserved_by = '$username')";
+		return $result = $this->db->query($query);
+	}
+
 }
 ?>
