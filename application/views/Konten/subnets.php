@@ -196,7 +196,7 @@
             <!--Header-->
             <div class="modal-header light-blue darken-3 white-text">
                 <h4 class="title"><i class="fas fa-database"></i>Edit IP Address</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close" aria-label="Close" onclick="close_moodal_edit()"><span
                         aria-hidden="true">&times;</span></button>
             </div>
 
@@ -362,7 +362,7 @@
                 <a type="button" class="btn btn-primary waves-effect waves-light" id="btn_reserve" onclick="simpan_edit()">Reserve
                     <i class="fas fa-save ml-1"></i>
                 </a>
-                <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+                <a type="button" class="btn btn-outline-primary waves-effect" onclick="close_moodal_edit()" >Cancel</a>
             </div>
 
         </div>
@@ -824,6 +824,21 @@ function hapusData2(){
     });
 }
     
+function close_moodal_edit(){
+    var id =  $('#id').val();
+    $.ajax({
+    type:'POST',
+    url:site+'Subnets/close_modal/'+id,
+    dataType:'json',
+    success: function(respon){
+    if(respon.status == 'sukses'){
+        $('#modalEdit').modal('hide');
+      }else{
+        $('#modalEdit').modal('hide');
+      }  
+    }
+    });
+}
    
 //  }
 </script>

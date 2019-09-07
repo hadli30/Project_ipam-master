@@ -187,54 +187,68 @@ class Subnets extends CI_Controller {
 
 	}
 
-	function editData($data){
-		$key = array('Id' => $data);
-		$sess_username = $this->session->userdata('email');
-		//$where = array('Id' => $data, 'Reserved_by' => $sess_username,);
-		$check_user = $this->Model_query->checkReserved($data, $sess_username);
-
-		// $check_Reserved_period = $this->Model_query->
-
-		if($check_user->num_rows() > 0){
-			$sql = $this->Model_global->getSelectedwhere('management_ip', $key);
-				if($sql->num_rows()>0){	
-					foreach($sql->result() as $dt){
-						$data = array(
-						'status'=>'sukses',
-						'id' => $dt->Id,
-						'area' => $dt->Area,
-						'ring' => $dt->Ring,
-						'hostname' => $dt->Hostname,
-						'router_name' => $dt->Router_name,
-						'site_id' => $dt->Site_id,
-						'tower_index' => $dt->Tower_index,
-						'site_name' => $dt->Site_name,
-						'phase' => $dt->Phase,
-						'bsc'	=> $dt->Bsc_rnc_lte,
-						'hut'	=> $dt->Hut,
-						'microwave_link_1' => $dt->Microwave_link_1,
-						'cap_abis' => $dt->Cap_abis_iub_s1,
-						's_vid_abis' => $dt->S_vid_abis_iub_s1,
-						'c_vid_abis' => $dt->C_vid_abis_iub_s1,
-						'ip_address_abis' => $dt->Ip_address_abis_iub_s1,
-						'ip_gateway_abis' => $dt->Ip_gateway_abis_iub_s1,
-						'subnet_abis' => $dt->Subnet_abis_iub_s1,
-						'cap_oam' => $dt->Cap_oam,
-						's_vid_oam' => $dt->S_vid_oam,
-						'c_vid_oam' => $dt->C_vid_oam,
-						'ip_address_oam' => $dt->Ip_address_oam,
-						'ip_gateway_oam' => $dt->Ip_gateway_oam,
-						'subnet_oam' => $dt->Subnet_oam,
-						);
-					}
-					// echo json_encode(array('status'=>'sukses'));
-					echo json_encode($data);
-				}else{
-					echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Data tidak ada'));
+	function editData($id){
+		$check_view = $this->db->query("select flag_view from management_ip where Id = '$id'");
+			if($check_view->num_rows() > 0){
+				foreach($check_view->result() as $dt){
+					$flag = $dt->flag_view;
 				}
+			}
+
+		if($flag == "false"){
+			$ganti_flag = $this->db->query("update management_ip set flag_view = 'true' where Id = '$id'");
+			$key = array('Id' => $id);
+			$sess_username = $this->session->userdata('email');
+			//$where = array('Id' => $id, 'Reserved_by' => $sess_username,);
+			$check_user = $this->Model_query->checkReserved($id, $sess_username);
+
+			// $check_Reserved_period = $this->Model_query->
+
+			if($check_user->num_rows() > 0){
+				$sql = $this->Model_global->getSelectedwhere('management_ip', $key);
+					if($sql->num_rows()>0){	
+						foreach($sql->result() as $dt){
+							$data = array(
+							'status'=>'sukses',
+							'id' => $dt->Id,
+							'area' => $dt->Area,
+							'ring' => $dt->Ring,
+							'hostname' => $dt->Hostname,
+							'router_name' => $dt->Router_name,
+							'site_id' => $dt->Site_id,
+							'tower_index' => $dt->Tower_index,
+							'site_name' => $dt->Site_name,
+							'phase' => $dt->Phase,
+							'bsc'	=> $dt->Bsc_rnc_lte,
+							'hut'	=> $dt->Hut,
+							'microwave_link_1' => $dt->Microwave_link_1,
+							'cap_abis' => $dt->Cap_abis_iub_s1,
+							's_vid_abis' => $dt->S_vid_abis_iub_s1,
+							'c_vid_abis' => $dt->C_vid_abis_iub_s1,
+							'ip_address_abis' => $dt->Ip_address_abis_iub_s1,
+							'ip_gateway_abis' => $dt->Ip_gateway_abis_iub_s1,
+							'subnet_abis' => $dt->Subnet_abis_iub_s1,
+							'cap_oam' => $dt->Cap_oam,
+							's_vid_oam' => $dt->S_vid_oam,
+							'c_vid_oam' => $dt->C_vid_oam,
+							'ip_address_oam' => $dt->Ip_address_oam,
+							'ip_gateway_oam' => $dt->Ip_gateway_oam,
+							'subnet_oam' => $dt->Subnet_oam,
+							);
+						}
+						// echo json_encode(array('status'=>'sukses'));
+						echo json_encode($data);
+					}else{
+						echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Data tidak ada'));
+					}
+			}else{
+				echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Ip address has already reserved !!!'));
+			}
 		}else{
-			echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Ip address has already reserved !!!'));
+			echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Sedang dibuka user lain !!!'));
 		}
+		
+		
 		
 	}
 
@@ -306,6 +320,7 @@ class Subnets extends CI_Controller {
 				'Tgl_reserved' => date("Y-m-d H:i:s")
 			);
 			$update = $this->db->update('management_ip', $data, $key);
+
 			$update2 = $this->db->query("UPDATE management_ip
 			SET  Reserved_period = DATE_ADD(Tgl_reserved, INTERVAL 2 MINUTE)
 			WHERE Id = '$id'");
@@ -332,6 +347,17 @@ class Subnets extends CI_Controller {
 		$sql1 = $sql1->num_rows();
 		if($sql1 > 0){
 			$sql1 = $this->Model_global->delete('management_ip',$key);
+			echo json_encode(array('status' => 'sukses'));
+		}else{
+			echo json_encode(array('status' => 'gagal'));
+		}
+	}
+
+	function close_modal($id){
+		$ganti_flag = $this->db->query("update management_ip set flag_view = 'false' where Id = '$id'");
+		$check_update = $this->db->query("select flag_view from management_ip where Id = '$id' AND flag_view = 'false'");
+
+		if($check_update->num_rows() > 0){
 			echo json_encode(array('status' => 'sukses'));
 		}else{
 			echo json_encode(array('status' => 'gagal'));
