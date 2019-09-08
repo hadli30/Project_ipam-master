@@ -18,3 +18,33 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em;
 }
+
+.avatar-pic {
+    vertical-align: middle;
+  width: 150px;
+  height: 170px;
+  border-radius: 50%;
+}
+
+/*// Class*/
+.visible {
+    visibility: visible;
+}
+.invisible {
+    visibility: hidden;
+}
+
+/*// Usage as a mixin*/
+.element {
+@include invisible(visible);
+}
+.element {
+@include invisible(hidden);
+}
+
+
+/*select*/
+.md-outline.select-wrapper+label {
+top: .5em !important;
+z-index: 2 !important;
+}
