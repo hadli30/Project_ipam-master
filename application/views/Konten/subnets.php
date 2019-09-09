@@ -16,6 +16,13 @@
     <link href="<?php echo base_url('assets/MD_template/');?>css/style.css" rel="stylesheet">
     <!-- MDBootstrap Datatables  -->
     <link href="<?php echo base_url('assets/MD_template/');?>css/addons/datatables.min.css" rel="stylesheet">
+    <!-- Your ipam styles -->
+    <link href="<?php echo base_url('assets/MD_template/');?>css/addons/ipam.css" rel="stylesheet">
+
+    
+    
+
+
 </head>
 
 <body>
@@ -122,7 +129,7 @@
         </div>
     </div>
     <div class="container-fluid">
-        <table id="dtIPAddress" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="dtIPAddress" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th class="th-sm"></th>
@@ -184,118 +191,7 @@
 <!-- /Modal delete -->
 
 
-
 <!--Modal: modalEdit-->
-<div class="modal fade bd-example-modal-lg" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalEdit"
-     aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog cascading-modal modal-lg" role="document">
-
-        <!--Content-->
-        <div class="modal-content">
-
-            <!--Header-->
-            <div class="modal-header light-blue darken-3 white-text">
-                <h4 class="title"><i class="fas fa-database"></i>Edit IP Address</h4>
-                <button type="button" class="close" aria-label="Close" onclick="close_moodal_edit()"><span
-                        aria-hidden="true">&times;</span></button>
-            </div>
-
-            <!--Body-->
-            <div class="modal-body mb-0 text-center">
-            <form id="formEdit">
-                <div class="form-group row">
-                    <label for="inputArea" class="col-sm-3 col-form-label text-left">Area</label>
-                    <div class="col-sm-9">
-                        <input type="hidden" id="id" name="id"> 
-                        <input type="text" class="form-control" id="inputArea"  name="inputArea" placeholder="Area">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputRing" class="col-sm-3 col-form-label text-left">Ring</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputRing"  name="inputRing" placeholder="Ring">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputHostname" class="col-sm-3 col-form-label text-left">Hostname</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputHostname"  name="inputHostname" placeholder="Hostname">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputRoutername" class="col-sm-3 col-form-label text-left">Router Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputRoutername"  name="inputRoutername" placeholder="Router Name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputSiteID" class="col-sm-3 col-form-label text-left">Site ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputSiteID"   name="inputSiteID" placeholder="Site ID">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputTowerIndex" class="col-sm-3 col-form-label text-left">Tower Index</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputTowerIndex"  name="inputTowerIndex" placeholder="Tower Index">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputSiteName" class="col-sm-3 col-form-label text-left">Site Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputSiteName" name="inputSiteName"  placeholder="Site Name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPhase" class="col-sm-3 col-form-label text-left">Phase</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPhase"  name="inputPhase" placeholder="Phase">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputBSC" class="col-sm-3 col-form-label text-left">BSC/RNC/LTE</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputBSC"  name="inputBSC" placeholder="BSC/RNC/LTE">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputHUT" class="col-sm-3 col-form-label text-left">HUT</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputHUT"  name="inputHUT" placeholder="HUT">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="inputHUT" class="col-sm-3 col-form-label text-left">Microwave Link#1</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputMicrowave"  name="inputMicrowave" placeholder="HUT">
-                    </div>
-                </div>
-
-                <hr>
-
-               <div id="khusus">
-               
-               </div>
-                </form>
-
-            </div>
-
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-                <a type="button" class="btn btn-primary waves-effect waves-light" id="btn_reserve" onclick="simpan_edit()">Reserve
-                    <i class="fas fa-save ml-1"></i>
-                </a>
-                <a type="button" class="btn btn-outline-primary waves-effect" onclick="close_moodal_edit()" >Cancel</a>
-            </div>
-
-        </div>
-        <!--/.Content-->
-
-    </div>
-</div>
-
-
 <div class="modal fade bd-example-modal-lg" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalEdit"
      aria-hidden="true">
     <div class="modal-dialog cascading-modal modal-lg" role="document">
@@ -306,187 +202,190 @@
             <!--Header-->
             <div class="modal-header light-blue darken-3 white-text">
                 <h4 class="title"><i class="fas fa-database"></i>Edit IP Address</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close"  aria-label="Close" onclick="close_moodal_edit()"><span
                         aria-hidden="true">&times;</span></button>
             </div>
 
             <!--Body-->
             <div class="modal-body mb-0 text-center">
-
+            <form id="form_edit">
                 <div class="form-group row">
                     <label for="inputArea" class="col-sm-3 col-form-label text-left">Area</label>
+                    <input type="hidden" class="form-control" id="id" name="id"placeholder="Area">
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputArea" placeholder="Area">
+                        <input type="text" class="form-control" id="inputArea" name="inputArea" placeholder="Area">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputRing" class="col-sm-3 col-form-label text-left">Ring</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputRing" placeholder="Ring">
+                        <input type="text" class="form-control" id="inputRing" name="inputRing" placeholder="Ring">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputHostname" class="col-sm-3 col-form-label text-left">Hostname</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputHostname" placeholder="Hostname">
+                        <input type="text" class="form-control" id="inputHostname" name="inputHostname" placeholder="Hostname">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputRoutername" class="col-sm-3 col-form-label text-left">Router Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputRoutername" placeholder="Router Name">
+                        <input type="text" class="form-control" id="inputRoutername" name="inputRoutername" placeholder="Router Name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputSiteID" class="col-sm-3 col-form-label text-left">Site ID</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputSiteID" placeholder="Site ID">
+                        <input type="text" class="form-control" id="inputSiteID" name="inputSiteID" placeholder="Site ID">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputTowerIndex" class="col-sm-3 col-form-label text-left">Tower Index</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputTowerIndex" placeholder="Tower Index">
+                        <input type="text" class="form-control" id="inputTowerIndex" name="inputTowerIndex" placeholder="Tower Index">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputSiteName" class="col-sm-3 col-form-label text-left">Site Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputSiteName" placeholder="Site Name">
+                        <input type="text" class="form-control" id="inputSiteName" name="inputSiteName" placeholder="Site Name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPhase" class="col-sm-3 col-form-label text-left">Phase</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputPhase" placeholder="Phase">
+                        <input type="text" class="form-control" id="inputPhase" name="inputPhase" placeholder="Phase">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputBSC" class="col-sm-3 col-form-label text-left">BSC/RNC/LTE</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputBSC" placeholder="BSC/RNC/LTE">
+                        <input type="text" class="form-control" id="inputBSC" name="inputBSC" placeholder="BSC/RNC/LTE">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputHUT" class="col-sm-3 col-form-label text-left">HUT</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputHUT" placeholder="HUT">
+                        <input type="text" class="form-control" id="inputHUT" name="inputHUT" placeholder="HUT">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputMicro" class="col-sm-3 col-form-label text-left">Microwave</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputMicro" placeholder="Microwave">
+                        <input type="text" class="form-control" id="inputMicro" name="inputMicro" placeholder="Microwave">
                     </div>
                 </div>
 
                 <hr>
 
                 <div id="abisoam">
-                    <!--                <h3>Abis/IuB/S1</h3>-->
-
-                    <!--                    <div class="container" id="selectOAM">-->
-                    <!--                        &lt;!&ndash;Blue select&ndash;&gt;-->
-                    <!--                <select class="mdb-select md-form colorful-select dropdown-primary">-->
-                    <!--                  <option value="1">Abis/IuB/S1</option>-->
-                    <!--                  <option value="2">OAM</option>-->
-                    <!--                </select>-->
-                    <!--                <label class="mdb-main-label">IP Address</label>-->
-                    <!--                &lt;!&ndash;/Blue select&ndash;&gt;-->
-                    <!--                    </div>-->
-
                     <select class="mdb-select md-form" id="selectOAM">
-                        <option value="" disabled selected>Choose your IP Address option</option>
                         <option value="1">Abis/IuB/S1</option>
                         <option value="2">OAM</option>
                     </select>
 
+                    <div id="dataAbis">
                     <div class="form-group row">
                         <label for="inputCAPabis" class="col-sm-3 col-form-label text-left">Cap (Kbps)</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputCAPabis" placeholder="Cap (Kbps)">
+                            <input type="text" class="form-control" id="inputCAPabis" name="inputCAPabis"  placeholder="Cap (Kbps)">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="inputSVIDabis" class="col-sm-3 col-form-label text-left">S-VID</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputSVIDabis" placeholder="S-VID">
+                            <input type="text" class="form-control" id="inputSVIDabis" name="inputSVIDabis" placeholder="S-VID">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="inputCVIDabis" class="col-sm-3 col-form-label text-left">C-VID</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputCVIDabis" placeholder="C-VID">
+                            <input type="text" class="form-control" id="inputCVIDabis" name="inputCVIDabis" placeholder="C-VID">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="inputIPAddressabis" class="col-sm-3 col-form-label text-left">IP Address</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputIPAddressabis" placeholder="IP Address">
+                            <input type="text" class="form-control" id="inputIPAddressabis" name="inputIPAddressabis" placeholder="IP Address">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="inputIPGatewayabis" class="col-sm-3 col-form-label text-left">IP Gateway</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputIPGatewayabis" placeholder="IP Gateway">
+                            <input type="text" class="form-control" id="inputIPGatewayabis" name="inputIPGatewayabis" placeholder="IP Gateway">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="inputSubnetabis" class="col-sm-3 col-form-label text-left">Subnet</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputSubnetabis" placeholder="Subnet">
+                            <input type="text" class="form-control" id="inputSubnetabis" name="inputSubnetabis" placeholder="Subnet">
+                        </div>
+                    </div>
+                    </div>
+                    <!-- data oam -->
+                    <div id="data_oam">
+
+                    <div class="form-group row">
+                        <label for="inputCAPabis" class="col-sm-3 col-form-label text-left">Cap (Kbps)</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputCAPoam" name="inputCAPoam" placeholder="Cap (Kbps)">
                         </div>
                     </div>
 
-                    <!--                <hr>-->
+                    <div class="form-group row">
+                        <label for="inputSVIDabis" class="col-sm-3 col-form-label text-left">S-VID</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputSVIDoam" name="inputSVIDoam" placeholder="S-VID">
+                        </div>
+                    </div>
 
-                    <!--                <h3>OAM</h3>-->
-                    <!--                <div class="form-group row">-->
-                    <!--                    <label for="inputCAPoam" class="col-sm-3 col-form-label text-left">Cap (Kbps)</label>-->
-                    <!--                    <div class="col-sm-9">-->
-                    <!--                        <input type="text" class="form-control" id="inputCAPoam" placeholder="Cap (Kbps)">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
-                    <!--                <div class="form-group row">-->
-                    <!--                    <label for="inputSVIDoam" class="col-sm-3 col-form-label text-left">S-VID</label>-->
-                    <!--                    <div class="col-sm-9">-->
-                    <!--                        <input type="text" class="form-control" id="inputSVIDoam" placeholder="S-VID">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
-                    <!--                <div class="form-group row">-->
-                    <!--                    <label for="inputCVIDoam" class="col-sm-3 col-form-label text-left">C-VID</label>-->
-                    <!--                    <div class="col-sm-9">-->
-                    <!--                        <input type="text" class="form-control" id="inputCVIDoam" placeholder="C-VID">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
-                    <!--                <div class="form-group row">-->
-                    <!--                    <label for="inputIPAddressoam" class="col-sm-3 col-form-label text-left">IP Address</label>-->
-                    <!--                    <div class="col-sm-9">-->
-                    <!--                        <input type="text" class="form-control" id="inputIPAddressoam" placeholder="IP Address">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
-                    <!--                <div class="form-group row">-->
-                    <!--                    <label for="inputIPGatewayoam" class="col-sm-3 col-form-label text-left">IP Gateway</label>-->
-                    <!--                    <div class="col-sm-9">-->
-                    <!--                        <input type="text" class="form-control" id="inputIPGatewayoam" placeholder="IP Gateway">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
-                    <!--                <div class="form-group row">-->
-                    <!--                    <label for="inputSubnetoam" class="col-sm-3 col-form-label text-left">Subnet</label>-->
-                    <!--                    <div class="col-sm-9">-->
-                    <!--                        <input type="text" class="form-control" id="inputSubnetoam" placeholder="Subnet">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
+                    <div class="form-group row">
+                        <label for="inputCVIDabis" class="col-sm-3 col-form-label text-left">C-VID</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputCVIDoam" name="inputCVIDoam" placeholder="C-VID">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputIPAddressabis" class="col-sm-3 col-form-label text-left">IP Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputIPAddressoam" name="inputIPAddressoam" placeholder="IP Address">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputIPGatewayabis" class="col-sm-3 col-form-label text-left">IP Gateway</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputIPGatewayoam" name="inputIPGatewayoam" placeholder="IP Gateway">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputSubnetabis" class="col-sm-3 col-form-label text-left">Subnet</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputSubnetoam" name="inputSubnetoam" placeholder="Subnet">
+                        </div>
+                    </div>
+
+                    </div>
+                    <!-- /data oam -->
+
                 </div>
-
+                </form>
             </div>
-
+           
             <!--Footer-->
             <div class="modal-footer justify-content-center">
-                <a type="button" class="btn btn-primary waves-effect waves-light">Reserve
+                <a type="button" class="btn btn-primary waves-effect waves-light" onclick="simpan_edit()">Reserve
                     <i class="fas fa-save ml-1"></i>
                 </a>
-                <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+                <a type="button" class="btn btn-outline-primary waves-effect" onclick="close_moodal_edit()">Cancel</a>
             </div>
 
         </div>
@@ -494,159 +393,12 @@
 
     </div>
 </div>
-
-<!--Modal: modalAdd-->
-<div class="modal fade bd-example-modal-lg" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalEdit"
-     aria-hidden="true">
-    <div class="modal-dialog cascading-modal modal-lg" role="document">
-
-        <!--Content-->
-        <div class="modal-content">
-
-            <!--Header-->
-            <div class="modal-header light-blue darken-3 white-text">
-                <h4 class="title"><i class="fas fa-database"></i>Add IP Address</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-            </div>
-
-            <!--Body-->
-            <div class="modal-body mb-0 text-center">
-
-                <div class="form-group row">
-                    <label for="addArea" class="col-sm-3 col-form-label text-left">Area</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addArea" placeholder="Area">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addRing" class="col-sm-3 col-form-label text-left">Ring</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addRing" placeholder="Ring">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addHostname" class="col-sm-3 col-form-label text-left">Hostname</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addHostname" placeholder="Hostname">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addRoutername" class="col-sm-3 col-form-label text-left">Router Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addRoutername" placeholder="Router Name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addSiteID" class="col-sm-3 col-form-label text-left">Site ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addSiteID" placeholder="Site ID">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addTowerIndex" class="col-sm-3 col-form-label text-left">Tower Index</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addTowerIndex" placeholder="Tower Index">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addSiteName" class="col-sm-3 col-form-label text-left">Site Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addSiteName" placeholder="Site Name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addPhase" class="col-sm-3 col-form-label text-left">Phase</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addPhase" placeholder="Phase">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addBSC" class="col-sm-3 col-form-label text-left">BSC/RNC/LTE</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addBSC" placeholder="BSC/RNC/LTE">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addHUT" class="col-sm-3 col-form-label text-left">HUT</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addHUT" placeholder="HUT">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="addMicro" class="col-sm-3 col-form-label text-left">Microwave</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addMicro" placeholder="Microwave">
-                    </div>
-                </div>
-
-                <hr>
-
-                    <!-- Material checked -->
-                    <div class="switch my-3">
-                        <label>
-                            Abis/IuB/S1
-                            <input type="checkbox" checked>
-                            <span class="lever"></span> OAM
-                        </label>
-                    </div>
-
-        
-                    <div class="form-group row">
-                        <label for="addCAPabis" class="col-sm-3 col-form-label text-left">Cap (Kbps)</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="addCAPabis" placeholder="Cap (Kbps)">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="addSVIDabis" class="col-sm-3 col-form-label text-left">S-VID</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="addSVIDabis" placeholder="S-VID">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="addCVIDabis" class="col-sm-3 col-form-label text-left">C-VID</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="addCVIDabis" placeholder="C-VID">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="addIPAddressabis" class="col-sm-3 col-form-label text-left">IP Address</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="addIPAddressabis" placeholder="IP Address">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="addIPGatewayabis" class="col-sm-3 col-form-label text-left">IP Gateway</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="addIPGatewayabis" placeholder="IP Gateway">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="addSubnetabis" class="col-sm-3 col-form-label text-left">Subnet</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="addSubnetabis" placeholder="Subnet">
-                        </div>
-                    </div>
+<!--Modal: modalEdit-->
 
 
 
-            </div>
 
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-                <a type="button" class="btn btn-primary waves-effect waves-light">ADD
-                    <i class="fas fa-save ml-1"></i>
-                </a>
-                <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
-            </div>
 
-        </div>
-        <!--/.Content-->
-
-    </div>
-</div>
-<!--Modal: modalAdd-->
 
 
 <!--Modal: modalChooseFile-->
@@ -691,6 +443,31 @@
     </div>
 </div>
 <!--Modal: modalChooseFile-->
+
+
+<div class="modal fade" id="modalAlreadyEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+            <!--Header-->
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Be always up to date</p>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer flex-center">
+                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
 <!--Modal: modalEdit-->
 <!-- Main layout -->
 
@@ -709,7 +486,8 @@
 <!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="<?php echo base_url('assets/MD_template/');?>js/addons/datatables.min.js"></script>
 
-<!-- MDBootstrap tables  -->
+
+
 <script>
    var site = '<?php echo base_url()?>';
 //    $(function(){
@@ -718,6 +496,9 @@
     $(document).ready(function () {
       getData();
 
+      
+     
+   
     });
 
 
@@ -862,23 +643,35 @@ function updateData(id){
             $('#inputIPAddressabis').val(respon.ip_address_abis);
             $('#inputIPGatewayabis').val(respon.ip_gateway_abis);
             $('#inputSubnetabis').val(respon.subnet_abis);
+
             $('#inputCAPoam').val(respon.cap_oam);
             $('#inputSVIDoam').val(respon.s_vid_oam);
-
             $('#inputCVIDoam').val(respon.c_vid_oam);
             $('#inputIPAddressoam').val(respon.ip_address_oam);
             $('#inputIPGatewayoam').val(respon.ip_gateway_oam);
             $('#inputSubnetoam').val(respon.subnet_oam);
-            $('#khusus input').prop("readonly",true);
 
+            $('#selectOAM').materialSelect();
+            $('#abisoam input').prop("readonly",true);
+            $('#modalEdit').modal({backdrop: false});
             $('#modalEdit').modal('show');
-
+            
       }else{
-        alert(respon.pesan);
+        $('#modalAlreadyEdit').modal('show');
+        $('#modalAlreadyEdit .modal-body').html(respon.pesan);
       }
     }
-
   });
+
+  $( "#selectOAM" ).change(function() {
+        if($( "#selectOAM option:selected" ).val() == 1){
+            $("#data_oam").hide();
+            $("#dataAbis").show();
+        }else{
+            $("#dataAbis").hide();
+            $("#data_oam").show();
+        }
+        }).trigger( "change" );
 }
 
 function simpan_edit(){
@@ -907,17 +700,19 @@ function simpan_edit(){
         //     $('#inputIPGatewayoam').val(respon.ip_gateway_oam);
         //     $('#inputSubnetoam').val(respon.subnet_oam);
 
-        // console.log($('#formEdit').serialize());
+        //  console.log($('#form_edit').serialize());
        
         $.ajax({
             type:'POST',
             url:site+'Subnets/editDataSubnets',
             dataType:'json',
-            data:$('#formEdit').serialize(),
+            data:$('#form_edit').serialize(),
             success: function(respon){
                 if(respon.status == 'sukses'){
+                close_moodal_edit();
                 window.location.href=site+'Subnets';
                 }else{
+                close_moodal_edit()
                 window.location.href=site+'Subnets';
                 } 
             }
@@ -949,6 +744,7 @@ function hapusData2(){
 }
     
 function close_moodal_edit(){
+   
     var id =  $('#id').val();
     $.ajax({
     type:'POST',
@@ -957,14 +753,22 @@ function close_moodal_edit(){
     success: function(respon){
     if(respon.status == 'sukses'){
         $('#modalEdit').modal('hide');
+        window.location.href=site+'Subnets';
       }else{
         $('#modalEdit').modal('hide');
+        window.location.href=site+'Subnets';
       }  
     }
     });
 }
-   
-//  }
+
+
+
+
+
+
+
+
 </script>
 </body>
 

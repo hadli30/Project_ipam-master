@@ -242,10 +242,17 @@ class Subnets extends CI_Controller {
 						echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Data tidak ada'));
 					}
 			}else{
-				echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Ip address has already reserved !!!'));
+				$pesan = '<i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+					<p>This IP Address has already reserve by another user</p>
+					';
+				$ganti_flag = $this->db->query("update management_ip set flag_view = 'false' where Id = '$id'");
+				echo json_encode(array('sukses'=>'gagal', 'pesan'=>$pesan));
 			}
 		}else{
-			echo json_encode(array('sukses'=>'gagal', 'pesan'=>'Sedang dibuka user lain !!!'));
+			$pesan = '<i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+					<p>This IP Address is editing by another user</p>
+					';
+			echo json_encode(array('sukses'=>'gagal', 'pesan'=>$pesan));
 		}
 		
 		
