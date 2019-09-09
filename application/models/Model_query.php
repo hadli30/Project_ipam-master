@@ -30,21 +30,56 @@ class Model_query extends CI_Model {
 	}
 	
 
-    function getDataSearcingSubnets($status_checkbox,$key1, $key2, $key3, $key4){
+    function getDataSearcingSubnets($status_checkbox,$key1, $key2, $key3, $key4,$key5,$key6,$key7,$key8){
+
+
+		if($key1 == ""){
+			$key1 = "NULL";
+		}
+		if($key2 == ""){
+			$key2 = "NULL";
+		}
+		if($key3 == ""){
+			$key3 = "NULL";
+		}
+		if($key4 == ""){
+			$key4 = "NULL";
+		}
+		if($key5 == ""){
+			$key5 = "NULL";
+		}
+		if($key6 == ""){
+			$key6 = "NULL";
+		}
+		if($key7 == ""){
+			$key7 = "NULL";
+		}
+		if($key8 == ""){
+			$key8 = "NULL";
+		}
+
         if($status_checkbox == 1){
             $query = "SELECT * from management_ip
 			WHERE 
 			Tower_index = '$key1' OR 
 			Tower_index = '$key2' OR 
 			Tower_index = '$key3' OR 
-			Tower_index = '$key4' ";
+			Tower_index = '$key4' OR 
+			Tower_index = '$key5' OR 
+			Tower_index = '$key6' OR
+			Tower_index = '$key7' OR  
+			Tower_index = '$key8' ";
         }else if($status_checkbox == 2){
             $query = "SELECT * from management_ip
 			WHERE
 			Site_id = '$key1' OR 
 			Site_id = '$key2' OR 
 			Site_id = '$key3' OR 
-			Site_id = '$key4'";
+			Site_id = '$key4' OR 
+			Site_id = '$key5' OR 
+			Site_id = '$key6' OR 
+			Site_id = '$key7' OR 
+			Site_id = '$key8'";
         }else if($status_checkbox == 3){
             $query = "SELECT * from management_ip
 			WHERE
@@ -52,10 +87,19 @@ class Model_query extends CI_Model {
 			Site_id = '$key2' OR 
 			Site_id = '$key3' OR 
 			Site_id = '$key4' OR
+			Site_id = '$key5' OR 
+			Site_id = '$key6' OR 
+			Site_id = '$key7' OR 
+			Site_id = '$key8' OR
 			Tower_index = '$key1' OR 
 			Tower_index = '$key2' OR 
 			Tower_index = '$key3' OR 
-			Tower_index = '$key4'";
+			Tower_index = '$key4' OR
+			Tower_index = '$key5' OR 
+			Tower_index = '$key6' OR
+			Tower_index = '$key7' OR  
+			Tower_index = '$key8'
+			";
         }
 
         return $result = $this->db->query($query);

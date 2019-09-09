@@ -52,7 +52,7 @@ class Subnets extends CI_Controller {
 				$this->db->update('management_ip', $data, $key);
 			}
 		}
-		 $sql = $this->db->query("select * from management_ip limit 50");
+		 $sql = $this->db->query("select * from management_ip");
 
 		//$sql = $this->Model_global->get_data_table('management_ip');
 
@@ -123,9 +123,13 @@ class Subnets extends CI_Controller {
 		$key2 = $this->input->post('key2');
 		$key3 = $this->input->post('key3');
 		$key4 = $this->input->post('key4');
+		$key5 = $this->input->post('key5');
+		$key6 = $this->input->post('key6');
+		$key7 = $this->input->post('key7');
+		$key8 = $this->input->post('key8');
 
 
-		$sql = $this->Model_query->getDataSearcingSubnets($status_checkbox, $key1, $key2, $key3, $key4);
+		$sql = $this->Model_query->getDataSearcingSubnets($status_checkbox, $key1, $key2, $key3, $key4, $key5, $key6, $key7,$key8);
 
 		if($sql->num_rows() > 0){
 			$no= 1;
