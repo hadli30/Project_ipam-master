@@ -80,31 +80,50 @@
 
 <!-- Main layout -->
 <main>
-    <div class="container-fluid mt-2">
-        <div class="clearfix">
-            <button class="btn btn-primary btn-sm float-left" type="button" data-toggle="modal" data-target="#modalAdd"><i class="fas fa-plus pr-1" aria-hidden="true"></i>Add IP</button>
-            <button type="button" class="btn btn-primary btn-sm float-left" data-toggle="modal" data-target="#modalChooseFile"><i class="fas fa-download pr-1" aria-hidden="true"></i>Import</button>
-            <a class="btn btn-primary btn-sm float-left" role="button" href="#"><i class="fas fa-upload pr-1" aria-hidden="true"></i>Export</a>
-             <div class="dropdown float-right">
-                <!--Trigger-->
-                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                    Multi Search
-                </button>
-                <div class="dropdown-menu" id="dtSearch">
-                    <!-- Material inline 1 -->
-                    <div class="dropdown-item form-check form-check-inline">
+<div class="container-fluid mt-3">
+        <div class="row mx-auto">
+            <div class="col-lg-11 col-sm-10">
+                <div class="row">
+                    <div class="col">
+                        <!-- Table Navigation -->
+                        <div class="clearfix">
+                            <button class="btn btn-primary btn-sm float-left" type="button" data-toggle="modal"
+                                    data-target="#modalReserve">
+                                <i class="fas fa-pen pr-1" aria-hidden="true"></i>Reserve
+                            </button>
+                            <button class="btn btn-primary btn-sm float-left" type="button" data-toggle="modal"
+                                    data-target="#modalAdd">
+                                <i class="fas fa-plus pr-1" aria-hidden="true"></i>Add IP
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm float-left" data-toggle="modal"
+                                    data-target="#modalChooseFile"><i class="fas fa-download pr-1"
+                                                                      aria-hidden="true"></i>Import
+                            </button>
+                            <a class="btn btn-primary btn-sm float-left" role="button" href="#"><i
+                                    class="fas fa-upload pr-1"
+                                    aria-hidden="true"></i>Export</a>
+                            <!-- BUTTON DROPDOWNS -->
+                            <div class="dropdown float-right">
+                                <!--Trigger-->
+                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                        data-toggle="dropdown">
+                                    Multi Search
+                                </button>
+                                <div class="dropdown-menu" id="dtSearch">
+                                    <!-- Material inline 1 -->
+                                    <div class="dropdown-item form-check form-check-inline">
                         <input type="checkbox" class="form-check-input" id="cbSiteID">
                         <label class="form-check-label" for="cbSiteID">Site ID</label>
                     </div>
 
-                    <!-- Material inline 2 -->
-                    <div class="dropdown-item form-check form-check-inline">
+                                    <!-- Material inline 2 -->
+                                      <div class="dropdown-item form-check form-check-inline">
                         <input type="checkbox" class="form-check-input" id="cbTowerIndex">
                         <label class="form-check-label" for="cbTowerIndex">Tower Index</label>
                     </div>
-                    <div class="dropdown-divider"></div>
-                    <!-- Search form -->
-                    <input class="form-control mb-1" type="text" placeholder="Search" aria-label="Search" id="key1"> 
+                                    <div class="dropdown-divider"></div>
+                                    <!-- Search form -->
+                                    <input class="form-control mb-1" type="text" placeholder="Search" aria-label="Search" id="key1"> 
                     <input class="form-control mb-1" type="text" placeholder="Search" aria-label="Search" id="key2">
                     <input class="form-control mb-1" type="text" placeholder="Search" aria-label="Search" id="key3">
                     <input class="form-control mb-1" type="text" placeholder="Search" aria-label="Search" id="key4">
@@ -113,20 +132,25 @@
                     <input class="form-control mb-1" type="text" placeholder="Search" aria-label="Search" id="key7">
                     <input class="form-control mb-1" type="text" placeholder="Search" aria-label="Search" id="key8">
 
-                    <div class="dropdown-divider"></div>
+                                    <div class="dropdown-divider"></div>
 
-                    <div class="btn-group dropdown-item">
-                        <input class="btn btn-sm btn-success" type="submit" value="Submit" onclick="search()">
-                        <input class="btn btn-sm btn-info" type="reset" value="Reset" onclick="reset()">
+                                    <div class="btn-group dropdown-item">
+                                        <input class="btn btn-sm btn-success" type="submit" value="Submit" onclick="search()">
+                                        <input class="btn btn-sm btn-info" type="reset" value="Reset" onclick="reset()">
+                                    </div>
+                                    <!--                    <a class="dropdown-item" href="#">Link One</a>-->
+                                    <!--                    <a class="dropdown-item" href="#">Link Two</a>-->
+                                    <!--                    <a class="dropdown-item" href="#">Link Three</a>-->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Table Navigation -->
                     </div>
                 </div>
-            </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <table id="dtIPAddress" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <div class="row">
+                    <div class="col">
+                        <!-- Table layout -->
+                        <table id="dtIPAddress" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th class="th-sm"></th>
@@ -154,7 +178,105 @@
         </tbody>
 
     </table>
+                        <!-- Table layout -->
+                    </div>
+                </div>
+            </div>
+            <!-- Filter layout -->
+            <div class="col-lg-1 col-sm-2 p-0 border rounded border-primary">
+                <div class="alert alert-primary font-weight-bold" role="alert">
+                    <i class="fas fa-sliders-h blue-text pr-2" aria-hidden="true"></i>Filter
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <select class="mdb-select colorful-select dropdown-primary md-form"
+                                searchable="Search here..."
+                                id="filter1">
+                            <option value="0" selected>All</option>
+                            <option value="1">Jabodetabek</option>
+                            <option value="2">Central Java</option>
+                            <option value="3">Sumatera</option>
+                        </select>
+                        <label class="mdb-main-label">By Area</label>
+                    </div>
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <select class="mdb-select colorful-select dropdown-primary md-form"
+                                searchable="Search here..."
+                                id="filter2">
+                            <option value="0" selected>All</option>
+                            <option value="1">Central Java Ring 15</option>
+                            <option value="2">Central Java Ring 16</option>
+                            <option value="3">Jabo Ring 12</option>
+                        </select>
+                        <label class="mdb-main-label">By Ring</label>
+                    </div>
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <select class="mdb-select colorful-select dropdown-primary md-form"
+                                searchable="Search here..."
+                                id="filter3">
+                            <option value="0" selected>All</option>
+                            <option value="1">MA-JK1398-01H</option>
+                            <option value="2">MA-JK2417227-01H</option>
+                            <option value="3">MA-JK2413476-01H</option>
+                        </select>
+                        <label class="mdb-main-label">By Hostname</label>
+                    </div>
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <select class="mdb-select colorful-select dropdown-primary md-form"
+                                searchable="Search here..."
+                                id="filter4">
+                            <option value="0" selected>All</option>
+                            <option value="1">Adrian</option>
+                            <option value="2">Hadli</option>
+                            <option value="3">Gabriela</option>
+                        </select>
+                        <label class="mdb-main-label">By User</label>
+                    </div>
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <select class="mdb-select colorful-select dropdown-primary md-form"
+                                searchable="Search here..."
+                                id="filter5">
+                            <option value="0" selected>All</option>
+                            <option value="1">Available</option>
+                            <option value="2">Reserved</option>
+                            <option value="3">Active</option>
+                        </select>
+                        <label class="mdb-main-label">By Status</label>
+                    </div>
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <select class="mdb-select colorful-select dropdown-primary md-form"
+                                searchable="Search here..."
+                                id="filter6">
+                            <option value="0" selected>All</option>
+                            <option value="1">1 day ago</option>
+                            <option value="2">3 days ago</option>
+                            <option value="3">7 days ago</option>
+                        </select>
+                        <label class="mdb-main-label">By Last Updated</label>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Filter layout -->
+        </div>
     </div>
+
 </main>
 
 
@@ -485,29 +607,29 @@
 
             <!--Body-->
             <div class="modal-body mb-0 text-center">
-
+                <form id="form_add">
                 <div class="form-group row">
                     <label for="addArea" class="col-sm-3 col-form-label text-left">Area</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addArea" placeholder="Area">
+                        <input type="text" class="form-control" id="addArea" name="addArea" placeholder="Area">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addRing" class="col-sm-3 col-form-label text-left">Ring</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addRing" placeholder="Ring">
+                        <input type="text" class="form-control" id="addRing"  name="addRing" placeholder="Ring">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addHostname" class="col-sm-3 col-form-label text-left">Hostname</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addHostname" placeholder="Hostname">
+                        <input type="text" class="form-control" id="addHostname" name="addHostname" placeholder="Hostname">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addRoutername" class="col-sm-3 col-form-label text-left">Router Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addRoutername" placeholder="Router Name">
+                        <input type="text" class="form-control" id="addRoutername" name="addRoutername" placeholder="Router Name">
                     </div>
                 </div>
                
@@ -516,25 +638,25 @@
                 <div class="form-group row">
                     <label for="addPhase" class="col-sm-3 col-form-label text-left">Phase</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addPhase" placeholder="Phase">
+                        <input type="text" class="form-control" id="addPhase" name="addPhase" placeholder="Phase">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addBSC" class="col-sm-3 col-form-label text-left">BSC/RNC/LTE</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addBSC" placeholder="BSC/RNC/LTE">
+                        <input type="text" class="form-control" id="addBSC" name="addBSC" placeholder="BSC/RNC/LTE">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addHUT" class="col-sm-3 col-form-label text-left">HUT</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addHUT" placeholder="HUT">
+                        <input type="text" class="form-control" id="addHUT" name="addHUT" placeholder="HUT">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addMicro" class="col-sm-3 col-form-label text-left">Microwave</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addMicro" placeholder="Microwave">
+                        <input type="text" class="form-control" id="addMicro" name="addMicro" placeholder="Microwave">
                     </div>
                 </div>
 
@@ -544,37 +666,37 @@
                 <div class="form-group row">
                     <label for="addCAPabis" class="col-sm-3 col-form-label text-left">Cap (Kbps)</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addCAPabis" placeholder="Cap (Kbps)">
+                        <input type="text" class="form-control" id="addCAPabis" name="addCAPabis" placeholder="Cap (Kbps)">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addSVIDabis" class="col-sm-3 col-form-label text-left">S-VID</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addSVIDabis" placeholder="S-VID">
+                        <input type="text" class="form-control" id="addSVIDabis" name="addSVIDabis" placeholder="S-VID">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addCVIDabis" class="col-sm-3 col-form-label text-left">C-VID</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addCVIDabis" placeholder="C-VID">
+                        <input type="text" class="form-control" id="addCVIDabis" name="addCVIDabis" placeholder="C-VID">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addIPAddressabis" class="col-sm-3 col-form-label text-left">IP Address</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addIPAddressabis" placeholder="IP Address">
+                        <input type="text" class="form-control" id="addIPAddressabis" name="addIPAddressabis" placeholder="IP Address">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addIPGatewayabis" class="col-sm-3 col-form-label text-left">IP Gateway</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addIPGatewayabis" placeholder="IP Gateway">
+                        <input type="text" class="form-control" id="addIPGatewayabis"  name="addIPGatewayabis" placeholder="IP Gateway">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addSubnetabis" class="col-sm-3 col-form-label text-left">Subnet</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addSubnetabis" placeholder="Subnet">
+                        <input type="text" class="form-control" id="addSubnetabis" name="addSubnetabis" placeholder="Subnet">
                     </div>
                 </div>
 
@@ -584,47 +706,45 @@
                 <div class="form-group row">
                     <label for="addCAPoam" class="col-sm-3 col-form-label text-left">Cap (Kbps)</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addCAPoam" placeholder="Cap (Kbps)">
+                        <input type="text" class="form-control" id="addCAPoam" name="addCAPoam" placeholder="Cap (Kbps)">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addSVIDoam" class="col-sm-3 col-form-label text-left">S-VID</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addSVIDoam" placeholder="S-VID">
+                        <input type="text" class="form-control" id="addSVIDoam" name="addSVIDoam" placeholder="S-VID">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addCVIDoam" class="col-sm-3 col-form-label text-left">C-VID</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addCVIDoam" placeholder="C-VID">
+                        <input type="text" class="form-control" id="addCVIDoam" name="addCVIDoam" placeholder="C-VID">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addIPAddressoam" class="col-sm-3 col-form-label text-left">IP Address</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addIPAddressoam" placeholder="IP Address">
+                        <input type="text" class="form-control" id="addIPAddressoam" name="addIPAddressoam" placeholder="IP Address">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addIPGatewayoam" class="col-sm-3 col-form-label text-left">IP Gateway</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addIPGatewayoam" placeholder="IP Gateway">
+                        <input type="text" class="form-control" id="addIPGatewayoam" name="addIPGatewayoam" placeholder="IP Gateway">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="addSubnetoam" class="col-sm-3 col-form-label text-left">Subnet</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="addSubnetoam" placeholder="Subnet">
+                        <input type="text" class="form-control" id="addSubnetoam" name="addSubnetoam" placeholder="Subnet">
                     </div>
                 </div>
-
+                </div>
             </div>
 
             <!--Footer-->
             <div class="modal-footer justify-content-center">
-                <a type="button" class="btn btn-primary waves-effect waves-light">ADD
-                    <i class="fas fa-save ml-1"></i>
-                </a>
+                <a type="button" class="btn btn-primary waves-effect waves-light">ADD<i class="fas fa-save ml-1" onclick="add_ip_baru()"></i></a>
                 <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
             </div>
 
@@ -662,8 +782,55 @@
     $(document).ready(function () {
       getData();
 
-      
+    $('#filter1').materialSelect();
+    $('#filter2').materialSelect();
+    $('#filter3').materialSelect();
+    $('#filter4').materialSelect();
+    $('#filter5').materialSelect();
+    $('#filter6').materialSelect();
      
+    $( "#filter3" ).change(function() {
+        if($( "#filter3 option:selected" ).val() != 0){
+            var dt = $( "#filter3 option:selected" ).val();
+
+$.ajax({
+type:'POST',
+url:site+'Subnets/filter/'+dt,
+dataType:'json',
+success: function(respon){
+if(respon.status == 'sukses'){
+  $('#dtIPAddress').DataTable().clear().destroy();
+  $('#data_table').empty();
+  $('#data_table').html(respon.Data);
+  $('#dtIPAddress').DataTable({
+    'paging'      : true,
+    'lengthChange': true,
+    'searching'   : false,
+    'ordering'    : false,
+    'info'        : true,
+    'autoWidth'   : true,
+    'scrollX'     : true
+  });
+  $('#filter3').html(respon.filter_hostname);
+}else{
+  $('#dtIPAddress').DataTable().clear().destroy();
+  $('#data_table').empty();
+  $('#data_table').html(respon.Data);
+  $('#dtIPAddress').DataTable({
+    'paging'      : true,
+    'lengthChange': true,
+    'searching'   : false,
+    'ordering'    : false,
+    'info'        : true,
+    'autoWidth'   : true,
+    'scrollX'     : true
+  });
+}
+}
+});
+        }
+        
+        }).trigger( "change" );
    
     });
 
@@ -701,6 +868,7 @@ function getData(){
             'autoWidth'   : true,
             'scrollX'     : true
           });
+          $('#filter3').html(respon.filter_hostname);
         }else{
           $('#dtIPAddress').DataTable().clear().destroy();
           $('#data_table').empty();
@@ -847,6 +1015,7 @@ function updateData(id){
             $("#data_oam").show();
         }
         }).trigger( "change" );
+
 }
 
 function simpan_edit(){
@@ -919,7 +1088,6 @@ function hapusData2(){
 }
     
 function close_moodal_edit(){
-   
     var id =  $('#id').val();
     $.ajax({
     type:'POST',
@@ -935,6 +1103,10 @@ function close_moodal_edit(){
       }  
     }
     });
+}
+
+function add_ip_baru(){
+    
 }
 
 

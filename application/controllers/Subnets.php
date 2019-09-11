@@ -52,9 +52,16 @@ class Subnets extends CI_Controller {
 				$this->db->update('management_ip', $data, $key);
 			}
 		}
-		 $sql = $this->db->query("select * from management_ip");
+		 $sql = $this->db->query("select * from management_ip Where Id BETWEEN '1' AND '100'");
 
-		//$sql = $this->Model_global->get_data_table('management_ip');
+		$query_check_hostname = $this->db->query("SELECT DISTINCT Hostname FROM management_ip");
+		$data_option_hostname = '';
+
+		if($query_check_hostname->num_rows() > 0){
+			foreach($query_check_hostname->result() as $dt_hostname){
+				$data_option_hostname .= '<option value="'.$dt_hostname->Hostname.'">'.$dt_hostname->Hostname.'</option>';
+			}
+		}
 
 		if($sql->num_rows() > 0){
 			$no=1;
@@ -87,7 +94,7 @@ class Subnets extends CI_Controller {
 							</tr>		
 				';
 			}
-			echo json_encode(array('status'=>'sukses', 'Data'=>$table));
+			echo json_encode(array('status'=>'sukses', 'Data'=>$table, 'filter_hostname' => $data_option_hostname));
 		}else{
 			$table .='<tr>
 								
@@ -112,6 +119,68 @@ class Subnets extends CI_Controller {
 								
 			</tr>';
 			echo json_encode(array('status'=>'Gagal', 'Data'=>$table));
+		}
+	}
+
+	function filter($data){
+		$query = $this->db->query("select * from management_ip where Hostname = '$data'");
+		$table = '';
+		if($query->num_rows() > 0){
+			$no= 1;
+			foreach($query->result() as $dt){
+				$table .='<tr>
+								<th>
+									<div class="btn-group">
+										<a class="btn btn-primary btn-sm px-1 py-0 m-0" role="button" href="#" onClick="updateData('.$dt->Id.')" title="Edit Subnets : '.$dt->Ip_address_abis_iub_s1.'"><i class="fas fa-pen fa-xs" aria-hidden="true"></i></a>
+										<button class="btn btn-primary btn-sm px-1 py-0 m-0" type="button" onClick="hapusData('.$dt->Id.')" ><i class="fas fa-times fa-xs" aria-hidden="true"></i></button>
+									</div>
+								</th>
+								<td style="font-size: 9px;">'.$no++.'</td>
+								<td style="font-size: 9px;">'.$dt->Area.'</td>
+								<td style="font-size: 9px;">'.$dt->Hostname.'</td>
+								<td style="font-size: 9px;">'.$dt->Router_name.'</td>
+								<td style="font-size: 9px;">'.$dt->Site_id.'</td>
+								<td style="font-size: 9px;">'.$dt->Tower_index.'</td>
+								<td style="font-size: 9px;">'.$dt->S_vid_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->C_vid_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_address_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_gateway_abis_iub_s1.'</td>
+								<td style="font-size: 9px;">'.$dt->Subnet_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->S_vid_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->C_vid_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_address_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Ip_gateway_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Subnet_oam.'</td>
+								<td style="font-size: 9px;">'.$dt->Reserved_by.'</td>
+							</tr>		
+						  </tr>';
+			}
+			echo json_encode(array('status'=>'success','Data'=>$table));
+		}else{
+			$table .='<tr>
+						<td style="font-size: 9px;">Tidak ada Data !!!</td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						<td style="font-size: 9px;"></td>
+						
+						
+
+			</tr>';
+			echo json_encode(array('status'=>'Gagal','Data'=>$table));
 		}
 	}
 	
@@ -319,7 +388,7 @@ class Subnets extends CI_Controller {
 				'C_vid_oam' => $C_vid_oam,
 				'Ip_address_oam' => $Ip_address_oam,
 				'Ip_gateway_oam' => $Ip_gateway_oam,
-				'Subnet_oam' => $Subnets_oam,
+				'Subnet_oam' => $Subnets_oam
 				// 'Reserved_by' => $sess_username
 				// 'Tgl_reserved' => date("Y-m-d H:i:s")
 		);
@@ -333,7 +402,7 @@ class Subnets extends CI_Controller {
 			$update = $this->db->update('management_ip', $data, $key);
 
 			$update2 = $this->db->query("UPDATE management_ip
-			SET  Reserved_period = DATE_ADD(Tgl_reserved, INTERVAL 2 MINUTE)
+			SET  Reserved_period = DATE_ADD(Tgl_reserved, INTERVAL 10 MINUTE)
 			WHERE Id = '$id'");
 		}else{
 			$update = $this->db->update('management_ip', $data, $key);
